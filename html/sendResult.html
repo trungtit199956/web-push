@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>발송 결과</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script type="module" src="../script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.1/chart.min.js" integrity="sha512-O2fWHvFel3xjQSi9FyzKXWLTvnom+lOYR/AUEThL/fbP4hv1Lo5LCFCGuTXBRyKC4K4DJldg5kxptkgXAzUpvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header d-flex align-items-center">
+            <h5 class="col fw-bold mx-5">발송 결과</h5>
+        </div>
+        <div class="card card-subtitle card-size mt-5 mx-2" style="border-radius: 24px;">
+            <div class="card-body">
+                <div class="main-1 row flex-sm-column flex-xxl-row m-4 pb-0">
+                    <div class="col card-size-sm border shadow-sm">
+                        <p class="fs-6 fw-bold m-2">메시지 내용</p>
+                        <div class="bg-img mx-3">
+                            <img src="" alt="이미지">
+                        </div>
+                        <p class="fs-12 m-3">2023.04.18 AM 12:59:59</p>
+                        <div class="mess-content m-3 text-wrap text-truncate mb-4 pb-2">
+                            <p>메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용</p>
+                        </div>
+                    </div>
+                    <div class="col card-size-sm border mx-md-2 shadow-sm h-100">
+                        <p class="fw-bold mb-3 mt-3 text-center">총 <span>1000</span>건 발송</p>
+                        <div class="mx-5 mx-sm-12">
+                            <canvas id="chart-result"></canvas>
+                        </div>
+                        <div class="text-center mb-3 mt-5 pb-3">
+                            <p class="fs-12 d-inline"><i class="bi bi-dot dot-clo" style="background-color: #bb86fc; color: #bb86fc;"></i>성공</p>
+                            <p class="fs-12 d-inline mx-3"><i class="bi bi-dot dot-clo" style="background-color: #00c4b4; color: #00c4b4;"></i>실패</p>
+                            <p class="fs-12 d-inline"><i class="bi bi-dot dot-clo" style="background-color: #7f39fb; color: #7f39fb;"></i>대기</p>
+                        </div>
+                    </div>
+                    <div class="col dispatch-react w-75 h-100">
+                        <div class="dispatch border row shadow-sm h-50">
+                            <p class="fs-6 fw-bold m-2">발송 대상</p>
+                            <div class="ct-flex mt-1">
+                                <p>수신동의 날짜</p>
+                                <span>전체 (999,999,999)</span>
+                            </div>
+                            <div class="ct-flex">
+                                <p>데스크탑</p>
+                                <span>600건 성공 / 총 950건 발송</span>
+                            </div> 
+                            <div class="ct-flex">
+                                <p>모바일</p>
+                                <span>201건 성공 / 총 350건 발송</span>
+                            </div>     
+                        </div>
+                        <div class="react border row mt-2 shadow-sm h-50">
+                            <p class="fs-6 fw-bold m-2">반응</p>
+                            <div class="ct-flex mt-1">
+                                <p>URL</p>
+                                <span>http://factmessage.com/</span>
+                            </div>
+                            <div class="ct-flex">
+                                <p>클릭 수</p>
+                                <span>600건</span>
+                            </div> 
+                            <div class="ct-flex">
+                                <p>반응률</p>
+                                <span>99%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-2 mt-5">
+                    <div class="search-form d-flex align-items-center justify-content-between">                        
+                        <div>
+                            <p class="fw-bold mx-4 mt-3">수신자별 결과</p>
+                        </div>
+                        <form action="" class="d-flex align-items-center justify-content-between input-group">
+                            <div class="mx-2">
+                                <label for="platform">플랫폼</label>
+                                <select class="form-select-sm">
+                                    <option value="" selected>전체</option>
+                                    <option value="" >데스크탑</option>
+                                    <option value="" >모바일</option>
+                                </select>
+                            </div>
+                            <div class="mx-4">
+                                <label for="send-status">발송 상태</label>
+                                <select class="form-select-sm">
+                                    <option value="" selected>전체</option>
+                                    <option value="" >성공</option>
+                                    <option value="" >발송중</option>
+                                    <option value="" >대기</option>
+                                    <option value="" >실패</option>
+                                </select>
+                            </div>    
+                            <div class="d-flex align-items-center input-group w-50">
+                                <label for="agr-date" class="mx-2">수신동의 날짜</label>
+                                <input type="date" class="form-control"><span class="mx-2">~</span>
+                                <input type="date" class="form-control">
+                            </div>
+                            <button class="btn1 btn-blue px-3 mx-4">검색</button>
+                        </form>
+                    </div>
+                    <div class="data-table mt-4 d-flex justify-content-center">
+                        <table class="table" style="max-width: 1120px;">
+                            <thead>
+                                <tr>
+                                    <th scope="col">No.</th>
+                                    <th scope="col">플랫폼</th>
+                                    <th scope="col">브라우저</th>
+                                    <th scope="col">수신동의 날짜</th>
+                                    <th scope="col">유저 토근</th>
+                                    <th scope="col">발송 상태</th>
+                                    <th scope="col">URL 클릭</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>데스크탑</td>
+                                    <td>Chrome <span class="text-muted">112.0.5615.86</span></td>
+                                    <td>0000.00.00 AM 00:00:00</td>
+                                    <td colspan="1" class="text-truncate text-short">https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...</td>
+                                    <td class="text-primary">성공</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>모바일</td>
+                                    <td>Chrome <span class="text-muted">112.0.5615.86</span></td>
+                                    <td>0000.00.00 AM 00:00:00</td>
+                                    <td colspan="1" class="text-truncate text-short">https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...</td>
+                                    <td>대기</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>모바일</td>
+                                    <td>Chrome <span class="text-muted">112.0.5615.86</span></td>
+                                    <td>0000.00.00 AM 00:00:00</td>
+                                    <td colspan="1" class="text-truncate text-short">https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...</td>
+                                    <td class="text-danger">실패</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class=" d-flex justify-content-center mt-5">
+                        <nav aria-label="Page navigation">
+                          <ul class="pagination">
+                            <li class="page-item">
+                              <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                              </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                              <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+    <script>
+
+        $(document).ready(function(){
+
+
+
+        });
+
+        const getSendResultList = (url) =>{
+            $.ajax({
+                url: url,
+                dataType: 'json',
+                success: function (res) {
+                    
+                    $.each(dtList, function(item){
+
+                    })           
+                },
+                error: function(){
+
+                }
+            });
+
+        }
+
+        // chart handling
+        const chartData = (dataArr) =>{
+            let arr = [];
+            
+        };
+        const data = [{
+            data: [740, 210, 50],
+            backgroundColor: [
+                "#bb86fc",
+                "#00c4b4",
+                "#7f39fb"
+            ],
+            borderColor: "transparent"
+        }];
+        
+
+
+        const ctx = document.getElementById('chart-result').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                datasets: data
+            },
+            options: {
+                tooltips: {
+                    enabled: false
+                },
+                plugins: {
+                    datalabels: {
+                    formatter: (value, ctx) => {
+                        const datapoints = ctx.chart.data.datasets[0].data
+                        const total = datapoints.reduce((total, datapoint) => total + datapoint, 0)
+                        const percentage = value / total * 100
+                        return percentage.toFixed(2) + "%";
+                    },
+                    color: '#fff',
+                    }
+                }
+            },
+            plugins: [ChartDataLabels],
+        });
+    </script>
+</body>
+</html>

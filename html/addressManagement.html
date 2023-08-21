@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주소록 관리</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script type="module" src="/script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header d-flex align-items-center">
+            <h5 class="col fw-bold mx-5">주소록 관리</h5>
+        </div>
+        <div class="main">
+            <div class="card card-subtitle card-size mt-5 mx-2" style="border-radius: 24px;">
+            <div class="card-header bg-transparent card-title m-2 p-3">
+                <div class="d-inline-flex align-items-center input-group w-50">
+                    <p class="text-muted pt-3 mx-3">수신동의 날짜</p>
+                    <input class="form-control mx-2" type="date">
+                    <span> ~ </span>
+                    <input class="form-control mx-2" type="date">
+                    <button class="btn1 btn-blue px-3 ">검색</button>
+                </div>
+                <div class=" mt-2 d-inline-flex">
+                    <div class="mx-3">
+                        <input type="radio">
+                        <span class="text-muted">전체</span>
+                        <span>99,999,999</span>
+                    </div>
+                    <div class="mx-3">
+                        <input type="radio">
+                        <span class="text-muted">데스크탑</span>
+                        <span>99,999,999</span>
+                    </div>
+                    <div class="mx-3">
+                        <input type="radio">
+                        <span class="text-muted">모바일</span>
+                        <span>99,999,999</span>
+                    </div>
+                    <div class="mx-3">
+                        <i class="bi bi-check-circle btn m-0 p-0" id="regPhoneChk" style="color: grey;"></i>
+                        <span class="text-muted">휴대폰 번호 등록자만 선택</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead class="text-muted">
+                        <tr class="bg-">
+                            <th>플랫폼</th>
+                            <th>브라우저<i class="bi bi-question-circle-fill mx-1"></i></th>
+                            <th>IP주소</th>
+                            <th>수신동의 날짜<i class="bi bi-question-circle-fill mx-1"></i></th>
+                            <th>휴대폰 번호</th>
+                            <th>유저토근<i class="bi bi-question-circle-fill mx-1"></i></th>
+                            <th>테스트 기기<i class="bi bi-question-circle-fill mx-1"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>데스크탑</td>
+                            <td>Chrome <span class="d-block text-muted">112.0.5615.86</span></td>
+                            <td>00.000.00.000</td>
+                            <td>0000.00.00 AM 00:00:00</td>
+                            <td>010-0000-0000</td>
+                            <td class="text-truncate text-short">https://fcm.googleapis.com/fcm/send/e27aa5Adas</td>
+                            <td class="px-5"><i class="bi bi-check-circle mx-1"></i></td>
+                        </tr>
+                        <tr>
+                            <td>모바일</td>
+                            <td>Chrome <span class="d-block text-muted">112.0.5615.86</span></td>
+                            <td>00.000.00.000</td>
+                            <td>0000.00.00 AM 00:00:00</td>
+                            <td>010-0000-0000</td>
+                            <td class="text-truncate text-short">https://fcm.googleapis.com/fcm/send/e27aa5Adas</td>
+                            <td class="px-5"><i class="bi bi-check-circle mx-1"></i></td>
+                        </tr> 
+                        <tr>
+                            <td>데스크탑</td>
+                            <td>Chrome <span class="d-block text-muted">112.0.5615.86</span></td>
+                            <td>00.000.00.000</td>
+                            <td>0000.00.00 AM 00:00:00</td>
+                            <td>010-0000-0000</td>
+                            <td class="text-truncate text-short">https://fcm.googleapis.com/fcm/send/e27aa5Adas</td>
+                            <td class="px-5"><i class="bi bi-check-circle-fill mx-1"></i></td>
+                        </tr>     
+                    </tbody>
+                </table>
+                <div class=" d-flex justify-content-center mt-5">
+                  <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                        </a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+            </div>
+                 
+            </div>
+        </div>
+    </div>
+</body>
+</html>

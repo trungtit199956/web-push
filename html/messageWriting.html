@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>메시지 작성</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/styles.css" />
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    /> -->
+    <!-- <script src="" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script type="module" src="/script.js"></script>
+
+
+
+  </head>
+  <body class="container-fluid bg-light">
+    <div class="container-lg">
+      <div class="position-realtive">
+        <div class="header row align-items-center">
+            <h5 class="col fw-bold" >새 메시지 만들기</h5>
+            <div class="btn-grp col justify-content-end">
+              <button class="btn1 btn-purple">테스트 발송</button>
+              <button class="btn1 btn-blue"><span><img class="icon" alt=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
+                <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+              </svg></span> 메시지 발송</button>
+        </div>
+      </div>
+      </div>
+      <div class="main mt-5">
+        <div class="card mb-3 card-subtitle card-size" style="border-radius: 24px;">
+          <div class="card-header bg-transparent card-title m-2"><span class="step text-nowrap m-2">1</span>발송 채널</div>
+          <div class="card-body d-inline-flex m-3 justify-content-evenly">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="appPush">
+              <label class="form-check-label" for="appPush">
+                자사 APP Push
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="webPush">
+              <label class="form-check-label" for="webPush">
+                Mobile Web Push
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-3 card-subtitle card-size" style="border-radius: 24px;">
+            <div class="card-header bg-transparent card-title m-2"><span class="step text-nowrap m-2">2</span>메시지 작성</div>
+            <div class="card-body row">
+              <div class="mb-3 col align-self-start mx-5 mt-4">
+                <form action="" class="msg-area">
+                    <textarea class="form-control bg-transparent text-break" id="msg-area" rows="12"
+                    placeholder="메시지 내용을 입력하세요.&#10&#10[변수 활용 예시]&#10#{이름}님, 환영합니다.&#10신규 가입 감사 쿠폰이 지급되었습니다.&#10쿠폰명: #{1}&#10유효기간: #{2}&#10회원가입을 해주셔서 감사합니다."></textarea>
+                </form>
+                <div class="attach mt-2">
+                    <ul class="d-inline-flex list-group flex-row">
+                      <li class="att-img btn p-0"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" fill="#6200EE" class="bi bi-card-image" viewBox="0 0 16 16">
+                        <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                        <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z"/>
+                      </svg></li>
+                      <li class="att-emoj btn p-0 mx-3"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" fill="#6200EE" class="bi bi-emoji-smile-fill" viewBox="0 0 16 16">
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zM4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8z"/>
+                      </svg></li>
+                      <li class="url">
+                        <span class="fw-bold" style="color: #6200EE;">URL</span>
+                        <input class="urlTxt" type="url" placeholder="https://gimesee.com">
+                      </li>
+                    </ul>
+                </div>
+              </div>
+              <div class="col align-self-center mx-5">
+                  <button type="button" class="btn-close img-del disabled" aria-label="Close"></button>
+                  <img class="img-preview" src="" alt="random image">
+              </div>
+              <div id="emoj-area">
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="card mb-3 card-subtitle card-size" style="border-radius: 24px;">
+        <div class="card-header bg-transparent card-title m-2"><span class="step text-nowrap m-2">3</span>발송 시간</div>
+            <div class="card-body row">
+              <div class="mb-3 d-flex justify-content-start">
+                <label for="sendPhone" class="form-label fw-bold mx-5">발신 번호</label>
+                <select name="sendPhone" id="">
+                  <option value="">031-8039-7370</option>
+                </select>
+              </div>
+              <div class="mb-3 d-flex justify-content-start">
+                <label for="" class="fw-bold mx-5">발송 시간</label>
+                <div class="d-inline">
+                  <input type="radio" name="immediateSend" id="">
+                  <label for="sendTime" class="form-label">즉시 발송</label>  
+                </div>
+                <div class="d-inline mx-3">
+                  <input type="radio" name="reservSend" id="">
+                  <label for="sendTime" class="form-label">예약 발송</label> 
+                  <div class="setSendTime hidden">
+                    <input type="date">
+                    <input type="time">
+                  </div> 
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>
+  </body>
+</html>

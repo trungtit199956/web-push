@@ -1,0 +1,113 @@
+{
+    "statistic":[{
+            "sendDate": "2023-08-21",
+            "web": {"success": 18,
+                    "fail": 5
+            },
+            "app": {"success": 18,
+                    "fail": 5
+            }
+        },
+        {
+            "sendDate": "2023-08-20",
+            "web": {"success": 18,
+                    "fail": 5
+            },
+            "app" :  {"success": 18,
+                      "fail": 5
+            }
+        }],
+
+     "sendResult":[
+        {
+        "no": 10,
+        "platform": "데스크탑",
+        "browser": "Chrome",
+        "ip": "112.0.5615.86",
+        "RAD": "0000.00.00 AM 00:00:00",
+        "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
+        "sendStatus": "성공",
+        "urlClick": ""
+        },{
+        "no": 9,
+        "platform": "데스크탑",
+        "browser": "Chrome",
+        "ip": "112.0.5615.86",
+        "RAD": "0000.00.00 AM 00:00:00",
+        "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
+        "sendStatus": "성공",
+        "urlClick": ""
+        },{
+        "no": 8,
+        "platform": "데스크탑",
+        "browser": "Chrome",
+        "ip": "112.0.5615.86",
+        "RAD": "0000.00.00 AM 00:00:00",
+        "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
+        "sendStatus": "성공",
+        "urlClick": ""
+        },{
+        "no": 7,
+        "platform": "데스크탑",
+        "browser": "Chrome",
+        "ip": "112.0.5615.86",
+        "RAD": "0000.00.00 AM 00:00:00",
+        "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
+        "sendStatus": "성공",
+        "urlClick": ""
+        },{
+        "no": 6,
+        "platform": "데스크탑",
+        "browser": "Chrome",
+        "ip": "112.0.5615.86",
+        "RAD": "0000.00.00 AM 00:00:00",
+        "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
+        "sendStatus": "성공",
+        "urlClick": ""
+        },{
+        "no": 5,
+        "platform": "데스크탑",
+        "browser": "Chrome",
+        "ip": "112.0.5615.86",
+        "RAD": "0000.00.00 AM 00:00:00",
+        "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
+        "sendStatus": "성공",
+        "urlClick": ""
+        },{
+        "no": 4,
+        "platform": "데스크탑",
+        "browser": "Chrome",
+        "ip": "112.0.5615.86",
+        "RAD": "0000.00.00 AM 00:00:00",
+        "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
+        "sendStatus": "성공",
+        "urlClick": ""
+        },{
+        "no": 3,
+        "platform": "데스크탑",
+        "browser": "Chrome",
+        "ip": "112.0.5615.86",
+        "RAD": "0000.00.00 AM 00:00:00",
+        "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
+        "sendStatus": "성공",
+        "urlClick": ""
+     },{
+        "no": 2,
+        "platform": "모바일",
+        "browser": "Chrome",
+        "ip": "112.0.5615.86",
+        "RAD": "0000.00.00 AM 00:00:00",
+        "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
+        "sendStatus": "대기",
+        "urlClick": ""
+     },{
+        "no": 1,
+        "platform": "모바일",
+        "browser": "Chrome",
+        "ip": "112.0.5615.86",
+        "RAD": "0000.00.00 AM 00:00:00",
+        "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
+        "sendStatus": "실패",
+        "urlClick": ""
+     }]   
+}

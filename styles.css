@@ -1,0 +1,194 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css");
+
+body{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #E8E8E8;
+  }
+
+.header{
+    max-width: 1198px;
+    height: 100px;    
+    background: #F3F3F3;
+    box-shadow: 0px 3px 6px #00000029;
+    opacity: 1;
+  }
+
+.btn-grp{
+    display: inline-flex;
+    flex-direction: row;
+}  
+
+.btn1{
+    font-size: 14px;
+    border-radius: 4px;
+    opacity: 1;
+    height: 35px;
+    border: none;
+    width: fit-content;
+}
+.btn-purple {
+    background: #985EFF;
+    color: #ffff;
+}
+.btn-blue{
+    margin-left: 10px;
+    background: #6200ee;
+    color: #ffff;
+    padding: 5px;
+}
+  
+.icon{
+    background: #6200ee;
+}
+
+.card-size{
+    max-width: 1200px;
+    max-height: fit-content;
+    box-shadow: 3px 5px 9px #00000029;
+    opacity: 1;
+}
+.card-size-sm{
+    max-width: 464px;
+    /* max-height: 446px; */
+    height: fit-content;
+    border-radius: 4px;
+    opacity: 1;
+}
+.step{
+    background-color: #6200EE;
+    padding: 0 5px;
+    color: white;
+    border-radius: 100%;
+}
+.card-title{
+    color: #6200EE;
+    font-weight: bold;
+}
+
+.msg-area{
+    max-width: 257px;
+    max-height: 300px;
+    background: #f1f1f1;
+}
+textarea{
+    resize: none;
+}
+.img-preview{
+    max-width:300px;
+}
+ul{
+    list-style: none;
+}
+.dropdown button{
+    border-radius: 30px;
+    width: fit-content;
+    height: 30px;
+}
+#emoj-area{
+    z-index: 1;
+}
+.urlTxt{
+    border: none;
+    border-bottom: 2px solid grey;
+}
+.hidden{
+    display: none;
+}
+.bi-question-circle-fill, .bi-check-circle{
+    color: grey;
+}
+.text-short{
+    max-width: 150px;
+}
+.setting-form input{
+    border: none;
+}
+.serv-nm{
+    max-width: 570px;
+}
+#thumbImg{
+    max-width: 100px;
+    max-height: 180px;
+}
+#flexSwitchCheck{
+  background-color: gray;
+  rotate: -180deg;
+}
+#on{
+    font-size: 5px;
+    color: #ffff;
+    margin-top: 5px;
+    margin-left: -22px;
+}
+.block-code{
+    max-width: 700px;
+    max-height: 300px;
+    background-color: #1f2937;
+    color: #ffff;
+}
+.copy-btn{
+    background-color: #374151;
+    color: #f1f1f1;
+}
+.bg-gray{
+    width: 150px;
+    height: 29px;
+    padding: 5px 10px;
+    background-color: #e4e4e4;
+    font-size: 12px;
+    color: black;
+    border-radius: 25px;
+}
+.fs-12{
+    font-size: 12px;
+}
+tbody .bi-file-bar-graph-fill{
+    width: 50px;
+    color: #6200EE;
+}
+.bg-img{
+    background-color: #7f39fb;
+    border-radius: 5px;
+    max-width: 366px;
+    height: 211px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#chart-result{
+    max-width: 264px;
+    max-height: 264px;
+}
+.dot-clo{
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    opacity: 1;
+    border-radius: 100%;
+}
+.ct-flex{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 6px;
+    padding-top: 10px;
+}
+.dispatch-react .ct-flex p{
+    background-color: #7f39fc;
+    border-radius: 25px;
+    font-size: 12px;
+    color: #f1f1f1;
+    padding: 5px 8px;
+}
+.ct-flex span{
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 800px){
+    .img-preview, .img-del, #iconDel, #thumbImg{
+        display: none;
+    }
+}
