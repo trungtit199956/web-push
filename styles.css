@@ -189,6 +189,9 @@ tbody .bi-file-bar-graph-fill{
 #btn:hover{
     cursor: pointer;
 }
+.text-purple{
+    color: #985EFF;
+}
 
 @media screen and (max-width: 800px){
     .img-preview, .img-del, #iconDel, #thumbImg{

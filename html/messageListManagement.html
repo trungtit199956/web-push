@@ -40,8 +40,8 @@
                             <th>메시지</th>
                             <th>상태</th>
                             <th>발송일</th>
-                            <th class="hidden">성공율</th>
-                            <th class="hidden">결과분석</th>
+                            <th>성공율</th>
+                            <th>결과분석</th>
                         </tr>
                     </thead>
                     <tbody >
@@ -49,22 +49,22 @@
                             <td class="text-truncate text-short">(광고) 이니그마 알아서 절약하는 똑똑한 메시지 발송, 지능형 메시징 시스템입니다. 한번의 원클릭으로 다양한 채...</td>
                             <td><span class="bg-gray">발송중</span></td>
                             <td class="fs-12">2022.12.31</td>
-                            <td class="hidden"><span class="bg-gray">100%</span></td>
-                            <td class="hidden"><i class="bi bi-file-bar-graph-fill fs-3"></i></td>
+                            <td><span class="bg-gray">100%</span></td>
+                            <td><i class="bi bi-file-bar-graph-fill fs-3"></i></td>
                         </tr>
                         <tr>
                             <td class="text-truncate text-short">(광고) 이니그마 알아서 절약하는 똑똑한 메시지 발송, 지능형 메시징 시스템입니다. 한번의 원클릭으로 다양한 채...</td>
                             <td><span class="bg-gray">완료</span></td>
                             <td class="fs-12">2022.12.31</td>
-                            <td class="hidden"><span class="bg-gray">100%</span></td>
-                            <td class="hidden"><i class="bi bi-file-bar-graph-fill fs-3"></i></td>
+                            <td><span class="bg-gray">100%</span></td>
+                            <td><i class="bi bi-file-bar-graph-fill fs-3"></i></td>
                         </tr>
                         <tr>
                             <td class="text-truncate text-short">(광고) 이니그마 알아서 절약하는 똑똑한 메시지 발송, 지능형 메시징 시스템입니다. 한번의 원클릭으로 다양한 채...</td>
                             <td><span class="bg-gray">예약대기</span></td>
                             <td class="fs-12">2022.12.31</td>
-                            <td class="hidden"><span class="bg-gray hidden">100%</span></td>
-                            <td class="hidden"><i class="bi bi-file-bar-graph-fill fs-3"></i></td>
+                            <td><span class="bg-gray">100%</span></td>
+                            <td><i class="bi bi-file-bar-graph-fill fs-3"></i></td>
                         </tr>
                     </tbody>
                 </table>
@@ -96,9 +96,11 @@
             $('#btn').click(function(){
                 location.href = "/html/statistic.html";
             });
-
+            
             $('table').on('click','tr',function(){
-                location.href= "/html/sendResult.html";
+                $(this).find("td:last").on('click',function(){
+                    location.href= "/html/sendResult.html";
+                });
             });
 
 
@@ -113,9 +115,17 @@
                     $.each(data ,function(idx, item){
                         html += '<tr>';
                            if(item.isAdvertising === 'Y'){
-                            html += `<td class="text-truncate text-short">(광고)${item.content}</td>`;
+                                if(item.image !== ""){
+                                    html += `<td class="text-truncate text-short"><i class="bi bi-card-image text-purple fs-5"></i>(광고)${item.content}</td>`;
+                                }else{
+                                    html += `<td class="text-truncate text-short">(광고)${item.content}</td>`;
+                                }
                            }else{
-                            html += `<td class="text-truncate text-short">${item.content}</td>`;
+                                if(item.image !== ""){
+                                    html += `<td class="text-truncate text-short"><i class="bi bi-card-image text-purple fs-5"></i>${item.content}</td>`;
+                                }else{
+                                    html += `<td class="text-truncate text-short">${item.content}</td>`;
+                                }
                            }
                            if(item.sendStatus === "SD"){
                             html += `<td><span class="bg-gray">발송중</span></td>`; 
@@ -125,6 +135,12 @@
                             html += `<td><span class="bg-gray">예약대기</span></td>`; 
                            }
                            html += `<td>${item.sendTime}</td>`;
+                           if(item.sendStatus === "FN"){
+                                html += `<td><span class="bg-gray">100%</span></td>`;
+                           }else{
+                                html += `<td><span class="bg-gray">0%</span></td>`;
+                           }
+                           html += `<td class="pt-1"><i class="bi bi-file-bar-graph-fill fs-4"></i></td>`;
                         html += '</tr>';
                     });
                     $('tbody').append(html);
