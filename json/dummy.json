@@ -21,93 +21,151 @@
      "sendResult":[
         {
         "no": 10,
-        "platform": "데스크탑",
+        "platform": "D",
         "browser": "Chrome",
         "ip": "112.0.5615.86",
         "RAD": "0000.00.00 AM 00:00:00",
         "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
-        "sendStatus": "성공",
-        "urlClick": ""
+        "sendStatus": "S",
+        "urlClick": "Y"
         },{
         "no": 9,
-        "platform": "데스크탑",
+        "platform": "D",
         "browser": "Chrome",
         "ip": "112.0.5615.86",
         "RAD": "0000.00.00 AM 00:00:00",
         "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
-        "sendStatus": "성공",
-        "urlClick": ""
+        "sendStatus": "S",
+        "urlClick": "Y"
         },{
         "no": 8,
-        "platform": "데스크탑",
+        "platform": "D",
         "browser": "Chrome",
         "ip": "112.0.5615.86",
         "RAD": "0000.00.00 AM 00:00:00",
         "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
-        "sendStatus": "성공",
-        "urlClick": ""
+        "sendStatus": "S",
+        "urlClick": "Y"
         },{
         "no": 7,
-        "platform": "데스크탑",
+        "platform": "M",
         "browser": "Chrome",
         "ip": "112.0.5615.86",
         "RAD": "0000.00.00 AM 00:00:00",
         "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
-        "sendStatus": "성공",
-        "urlClick": ""
+        "sendStatus": "S",
+        "urlClick": "N"
         },{
         "no": 6,
-        "platform": "데스크탑",
+        "platform": "D",
         "browser": "Chrome",
         "ip": "112.0.5615.86",
         "RAD": "0000.00.00 AM 00:00:00",
         "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
-        "sendStatus": "성공",
-        "urlClick": ""
+        "sendStatus": "S",
+        "urlClick": "N"
         },{
         "no": 5,
-        "platform": "데스크탑",
+        "platform": "M",
         "browser": "Chrome",
         "ip": "112.0.5615.86",
         "RAD": "0000.00.00 AM 00:00:00",
         "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
-        "sendStatus": "성공",
+        "sendStatus": "F",
         "urlClick": ""
         },{
         "no": 4,
-        "platform": "데스크탑",
+        "platform": "D",
         "browser": "Chrome",
         "ip": "112.0.5615.86",
         "RAD": "0000.00.00 AM 00:00:00",
         "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
-        "sendStatus": "성공",
+        "sendStatus": "F",
         "urlClick": ""
         },{
         "no": 3,
-        "platform": "데스크탑",
+        "platform": "M",
         "browser": "Chrome",
         "ip": "112.0.5615.86",
         "RAD": "0000.00.00 AM 00:00:00",
         "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
-        "sendStatus": "성공",
+        "sendStatus": "F",
         "urlClick": ""
      },{
         "no": 2,
-        "platform": "모바일",
+        "platform": "M",
         "browser": "Chrome",
         "ip": "112.0.5615.86",
         "RAD": "0000.00.00 AM 00:00:00",
         "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
-        "sendStatus": "대기",
+        "sendStatus": "W",
         "urlClick": ""
      },{
         "no": 1,
-        "platform": "모바일",
+        "platform": "M",
         "browser": "Chrome",
         "ip": "112.0.5615.86",
         "RAD": "0000.00.00 AM 00:00:00",
         "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
-        "sendStatus": "실패",
+        "sendStatus": "W",
         "urlClick": ""
-     }]   
+     }],
+     
+     "messageList":[{
+        "id": 3,
+        "title": "",
+        "content": "메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용",
+        "image": "",
+        "sendTime": "0000.00.00 AM 00:00:00",
+        "responseUrl": "http://factmessage.com/",
+        "isAdvertising": "Y",
+        "sendStatus": "SD" 
+     },{
+        "id": 2,
+        "title": "",
+        "content": "메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용",
+        "image": "https://random.imagecdn.app/501/155",
+        "sendTime": "0000.00.00 AM 00:00:00",
+        "responseUrl": "https://enigma.so/",
+        "isAdvertising":"Y",
+        "sendStatus": "FN"
+     },{
+        "id": 1,
+        "title": "",
+        "content": "메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용",
+        "image": "",
+        "sendTime": "0000.00.00 AM 00:00:00",
+        "responseUrl": "http://factmessage.com/",
+        "isAdvertising": "N",
+        "sendStatus": "RV"
+     }],
+
+     "address":[{
+        "no": 3,
+        "platform": "D",
+        "browser": "Chrome",
+        "ip": "112.0.5615.86",
+        "phone": "010-0000-0000",
+        "RAD": "2023-08-22",
+        "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
+        "isRegistrant":"Y"
+     },{
+        "no": 2,
+        "platform": "M",
+        "browser": "Chrome",
+        "ip": "112.0.5615.86",
+        "phone": "010-0000-0000",
+        "RAD": "2023-08-22",
+        "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
+        "isRegistrant":"Y"
+     },{
+        "no": 1,
+        "platform": "D",
+        "browser": "Chrome",
+        "ip": "112.0.5615.86",
+        "phone": "010-0000-0000",
+        "RAD": "2023-08-22",
+        "userToken": "https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...",
+        "isRegistrant":""
+     }]
 }

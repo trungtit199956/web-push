@@ -6,6 +6,7 @@
     <title>주소록 관리</title>
     <link rel="stylesheet" href="/styles.css">
     <script type="module" src="/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -17,28 +18,29 @@
             <div class="card-header bg-transparent card-title m-2 p-3">
                 <div class="d-inline-flex align-items-center input-group w-50">
                     <p class="text-muted pt-3 mx-3">수신동의 날짜</p>
-                    <input class="form-control mx-2" type="date">
+                    <input class="form-control mx-2" name="startDt" type="date">
                     <span> ~ </span>
-                    <input class="form-control mx-2" type="date">
+                    <input class="form-control mx-2" name="endDt" type="date">
                     <button class="btn1 btn-blue px-3 ">검색</button>
                 </div>
                 <div class=" mt-2 d-inline-flex">
                     <div class="mx-3">
-                        <input type="radio">
+                        <input type="radio" name="totalChk" value="T" checked>
                         <span class="text-muted">전체</span>
-                        <span>99,999,999</span>
+                        <span id="totalCnt">99,999,999</span>
                     </div>
                     <div class="mx-3">
-                        <input type="radio">
+                        <input type="radio" name="desChk" value="D">
                         <span class="text-muted">데스크탑</span>
-                        <span>99,999,999</span>
+                        <span id="desCnt">99,999,999</span>
                     </div>
                     <div class="mx-3">
-                        <input type="radio">
+                        <input type="radio" name="mobiChk" value="M">
                         <span class="text-muted">모바일</span>
-                        <span>99,999,999</span>
+                        <span id="mobiCnt">99,999,999</span>
                     </div>
                     <div class="mx-3">
+                        <input type="checkbox" class="hidden" name="isRegistant" value="">
                         <i class="bi bi-check-circle btn m-0 p-0" id="regPhoneChk" style="color: grey;"></i>
                         <span class="text-muted">휴대폰 번호 등록자만 선택</span>
                     </div>
@@ -54,41 +56,14 @@
                             <th>수신동의 날짜<i class="bi bi-question-circle-fill mx-1"></i></th>
                             <th>휴대폰 번호</th>
                             <th>유저토근<i class="bi bi-question-circle-fill mx-1"></i></th>
-                            <th>테스트 기기<i class="bi bi-question-circle-fill mx-1"></i></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>데스크탑</td>
-                            <td>Chrome <span class="d-block text-muted">112.0.5615.86</span></td>
-                            <td>00.000.00.000</td>
-                            <td>0000.00.00 AM 00:00:00</td>
-                            <td>010-0000-0000</td>
-                            <td class="text-truncate text-short">https://fcm.googleapis.com/fcm/send/e27aa5Adas</td>
-                            <td class="px-5"><i class="bi bi-check-circle mx-1"></i></td>
-                        </tr>
-                        <tr>
-                            <td>모바일</td>
-                            <td>Chrome <span class="d-block text-muted">112.0.5615.86</span></td>
-                            <td>00.000.00.000</td>
-                            <td>0000.00.00 AM 00:00:00</td>
-                            <td>010-0000-0000</td>
-                            <td class="text-truncate text-short">https://fcm.googleapis.com/fcm/send/e27aa5Adas</td>
-                            <td class="px-5"><i class="bi bi-check-circle mx-1"></i></td>
-                        </tr> 
-                        <tr>
-                            <td>데스크탑</td>
-                            <td>Chrome <span class="d-block text-muted">112.0.5615.86</span></td>
-                            <td>00.000.00.000</td>
-                            <td>0000.00.00 AM 00:00:00</td>
-                            <td>010-0000-0000</td>
-                            <td class="text-truncate text-short">https://fcm.googleapis.com/fcm/send/e27aa5Adas</td>
-                            <td class="px-5"><i class="bi bi-check-circle-fill mx-1"></i></td>
-                        </tr>     
+                            
                     </tbody>
                 </table>
                 <div class=" d-flex justify-content-center mt-5">
-                  <nav aria-label="Page navigation">
+                  <nav aria-label="Page navigation" class="hidden">
                     <ul class="pagination">
                       <li class="page-item">
                         <a class="page-link" href="#" aria-label="Previous">
@@ -111,5 +86,81 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function(){
+            
+            getAddressList("/json/dummy.json");
+
+
+            let regPhoneChk = 1;
+            $('#regPhoneChk').click(function(){
+                regPhoneChk += 1;
+                $(this).css('color', 'black');
+                if(regPhoneChk % 2 == 0){
+                    $(this).removeClass('bi-check-circle');
+                    $(this).addClass('bi-check-circle-fill');
+                    $('input[name="isRegistant"]').val('Y');
+                    $('input[name="isRegistant"]').attr('checked', true);
+                }else{
+                    $(this).addClass('bi-check-circle');
+                    $(this).removeClass('bi-check-circle-fill');
+                    $('input[name="isRegistant"]').val('');
+                    $('input[name="isRegistant"]').prop('checked', true);
+                }
+            });
+
+            let arrChk = "totalChk";
+            $('input[type="radio"]').click(function(){
+                if(arrChk !== ''){
+                    $('input[name="'+ arrChk +'"]').prop('checked', false);
+                };
+                arrChk = $(this).attr('name');
+            });
+
+
+
+        });
+
+        const getAddressList = (url) =>{
+            $.ajax({
+                url: url,
+                // method: "POST",
+                // data : data,
+                dataType: "json",
+                success: function(res){
+                    let data = res.address;
+                    let html = '';
+                    let desCnt = 0;
+                    let mobiCnt = 0;
+
+                    $('tbody tr').remove();
+                    $.each( data,function(idx, item){
+                        html += "<tr>";
+                            if(item.platform === 'D'){
+                                html += `<td>데스크탑</td>`;
+                                desCnt += 1;
+                            }else{
+                                html += `<td>모바일</td>`;
+                                mobiCnt += 1;
+                            }
+                            html += `<td>${item.browser}</td>`;
+                            html += `<td>${item.ip}</td>`;
+                            html += `<td>${item.RAD}</td>`;
+                            html += `<td>${item.phone}</td>`;
+                            html += `<td class="text-truncate text-short">${item.userToken}</td>`;
+                        html += "</tr>";
+                    });
+                    $('#totalCnt').text(desCnt + mobiCnt);
+                    $('#desCnt').text(desCnt);
+                    $('#mobiCnt').text(mobiCnt);
+                    $('tbody').append(html);
+                },
+                error: function(){
+                    alert('fetch data error!');
+                }
+
+            });
+        }
+    </script>
 </body>
 </html>

@@ -17,15 +17,15 @@
                 <div class="search-form m-4">
                     <form action="" class="d-flex align-items-center justify-content-end">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" checked>
+                            <input class="form-check-input" type="radio" name="baseDay" checked>
                             <label class="form-check-label" for="">일 기준</label>
                         </div>
-                        <div class="form-check mx-3 hidden">
-                            <input class="form-check-input" type="radio">
+                        <div class="form-check mx-3 ">
+                            <input class="form-check-input" name="baseMonth" type="radio">
                             <label class="form-check-label" for="">월 기준</label>
                         </div>
-                        <div class="form-check mx-3 hidden">
-                            <input class="form-check-input" type="radio">
+                        <div class="form-check mx-3 ">
+                            <input class="form-check-input" name="baseYear" type="radio">
                             <label class="form-check-label" for="">년 기준</label>
                         </div>
                         <div class="d-flex align-items-center mx-3 input-group w-25">
@@ -41,12 +41,8 @@
                             <tr>
                                 <th rowspan="2">구분</th>
                                 <th colspan="3">Web Push</th>
-                                <th colspan="3">자사 App Push</th>
                             </tr>
                             <tr>
-                                <th>전송<br>건수</th>
-                                <th>성공<br>건수</th>
-                                <th>실패<br>건수</th>
                                 <th>전송<br>건수</th>
                                 <th>성공<br>건수</th>
                                 <th>실패<br>건수</th>
@@ -55,9 +51,6 @@
                         <tbody class="text-end">
                             <tr class="bg-primary">
                                 <td class="text-center">합계</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
@@ -73,18 +66,28 @@
         $(document).ready(function () {
             
             //통계 데이터를 가져오기            
-            messageCount('/json/dummy.json');
-
-            $("#dt1").val(new Date().toLocaleDateString('en-CA'));
-            $("#dt2").val(new Date().toLocaleDateString('en-CA'));
+            messageCountList('/json/dummy.json');
+            
+            //검색 기간 세팅
+            const today = new Date().toLocaleDateString('en-CA');
+            $("#dt1").val(today);
+            $("#dt2").val(today);
 
             $('button').on('click',function(){
                 messageCount('/json/dummy.json');
             });
 
+            let arrChk = "baseDay";
+            $('input[type="radio"]').click(function(){
+                if(arrChk !== ''){
+                    $('input[name="'+ arrChk +'"]').prop('checked', false);
+                };
+                arrChk = $(this).attr('name');
+            });
+
         });
 
-        const messageCount = (url) =>{
+        const messageCountList = (url) =>{
                 // let data = new FormData($('form')[0]);
                 $.ajax({
                     url: url,
@@ -96,9 +99,6 @@
                         let totalSendWebCnt = 0;
                         let totalSuccessWebCnt = 0;
                         let totalFailWebCnt  = 0;
-                        let totalSendAppCnt= 0;
-                        let totalSuccessAppCnt= 0;
-                        let totalFailAppCnt  = 0;
                         let html = '';
                         
                         $('tbody tr').remove();
@@ -110,23 +110,14 @@
                                     totalSuccessWebCnt += item.web.success;
                                 html+= `<td>${item.web.fail}</td>`;
                                     totalFailWebCnt += item.web.fail;
-                                html+= `<td>${item.app.success + item.app.fail}</td>`;
-                                html+= `<td>${item.app.success}</td>`;
-                                    totalSuccessAppCnt += item.app.success;
-                                html+= `<td>${item.app.fail}</td>`;
-                                    totalFailAppCnt += item.app.fail;
                             html += '</tr>';
                         });
                         totalSendWebCnt = totalSuccessWebCnt + totalFailWebCnt;
-                        totalSendAppCnt = totalSuccessAppCnt + totalFailAppCnt;
                         html += '<tr class="bg-info">';
                             html += `<td class='text-center'>합계</td>`;
                             html += `<td>${totalSendWebCnt}</td>`;
                             html += `<td>${totalSuccessWebCnt}</td>`;
                             html += `<td>${totalFailWebCnt}</td>`;
-                            html += `<td>${totalSendAppCnt}</td>`;
-                            html += `<td>${totalSuccessAppCnt}</td>`;
-                            html += `<td>${totalFailAppCnt}</td>`;
                         html += '</tr>';
 
                         $('tbody').html(html);

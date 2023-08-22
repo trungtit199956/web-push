@@ -10,9 +10,7 @@ script.onreadystatechange = handler;
 script.onload = handler;
 head.appendChild(script);
 
-function handler(){
-// $(document).ready(function(){
-// message writing page handler    
+function handler(){   
     $('.att-img').click(function(){
         $('.img-del').removeClass("disabled");
         $('.img-preview').attr("src","https://random.imagecdn.app/501/155");
@@ -81,12 +79,6 @@ function handler(){
         el.focus();
     }
 
-    /// address management
-    $('#regPhoneChk').click(function(){
-        $(this).css('color', 'black');
-        $(this).removeClass('bi-check-circle');
-        $(this).addClass('bi-check-circle-fill');
-    });
 
     /// setting web push
 
@@ -151,5 +143,11 @@ function handler(){
         $temp.remove();
     }
 
-}    
-// });
+    
+    window.onpopstate = function(event) {
+        if (event.state && event.state.redirect) {
+            window.location.href = event.state.redirect;
+        }
+    };
+
+}

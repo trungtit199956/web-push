@@ -53,8 +53,8 @@ body{
 }
 .card-size-sm{
     max-width: 464px;
-    /* max-height: 446px; */
-    height: fit-content;
+    max-height: 446px;
+    /* height: fit-content; */
     border-radius: 4px;
     opacity: 1;
 }
@@ -151,7 +151,7 @@ tbody .bi-file-bar-graph-fill{
     color: #6200EE;
 }
 .bg-img{
-    background-color: #7f39fb;
+    /* background-color: #7f39fb; */
     border-radius: 5px;
     max-width: 366px;
     height: 211px;
@@ -185,6 +185,9 @@ tbody .bi-file-bar-graph-fill{
 }
 .ct-flex span{
     margin-right: 10px;
+}
+#btn:hover{
+    cursor: pointer;
 }
 
 @media screen and (max-width: 800px){

@@ -6,6 +6,7 @@
     <title>Web Push 설정</title>
     <link rel="stylesheet" href="/styles.css">
     <script type="module" src="/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -17,34 +18,34 @@
                 <span class="step text-nowrap m-2">1</span>기본 정보
             </div>
             <div class="card-body row-12 d-flex">
-                <form action="" class="setting-form col-6 mx-3">
+                <form action="" class="setting-form col-6 mx-3" id="form1">
                     <div class="serv-nm border rounded d-flex p-0">
                         <div class="p-2 w-25">
-                            <label for="serv-nm" class="fw-bold">서비스명</label>
+                            <label for="serviceNm" class="fw-bold">서비스명</label>
                         </div>
                         <div class="w-100 p-1">
-                            <input class="form-control" type="text" name="serv-nm" id="" placeholder="기업명 혹은 서비스명을 입력해주세요.">
+                            <input class="form-control" value="" type="text" name="serviceNm" id="" placeholder="기업명 혹은 서비스명을 입력해주세요.">
                         </div>
                     </div>
                     <div class="serv-nm border rounded d-flex p-0 mt-2">
                         <div class="p-2" style="width: 135px;">
-                            <label for="serv-nm" class="fw-bold">사이트 URL</label>
+                            <label for="serviceSite" class="fw-bold">사이트 URL</label>
                         </div>
                         <div class="w-100 p-1">
-                            <input class="form-control" type="text" name="serv-nm" id="" placeholder="기업 혹은 서비스의 사이트 URL 입력해주세요.">
+                            <input class="form-control" type="text" value="" name="serviceSite" id="" placeholder="기업 혹은 서비스의 사이트 URL 입력해주세요.">
                         </div>
                     </div>
                     <div class="serv-nm border rounded d-flex p-0 mt-2">
                         <div class="p-2" style="width: 135px;">
-                            <label for="serv-nm" class="fw-bold">아이콘</label>
+                            <label for="uploadIcon" class="fw-bold">아이콘</label>
                         </div>
                         <div class="w-100 p-1 d-flex flex-row-reverse">
                             <button class="btn1 btn-blue px-3" type="button" id="uploadBtn">업로드</button>
-                            <input type="file" class="hidden" accept="image/png, image/jpeg" value="" id="iconUpload">
+                            <input type="file" class="hidden" value="" name="uploadIcon" accept="image/png, image/jpeg" value="" id="iconUpload">
                         </div>
                     </div>
                     <div class="mt-3 d-flex flex-row-reverse">
-                        <button class="btn1 btn-blue px-3 mx-3">저장</button>
+                        <button type="submit" class="btn1 btn-blue px-3 mx-3">저장</button>
                     </div>
                 </form>
                 <div class="mx-5 col-6 d-flex justify-content-center">
@@ -58,21 +59,21 @@
                 <span class="step text-nowrap m-2">2</span>웹푸시 수신 동의 팝업 설정
             </div>
             <div class="card-body">
-                <form action="" class="setting-form col-6 mx-3 ">
+                <form action="" class="setting-form col-6 mx-3" id="form2">
                     <div class="serv-nm border rounded d-flex p-0">
                         <div class="p-2 w-25">
-                            <label for="push-title" class="fw-bold">제목</label>
+                            <label for="pushTitle" class="fw-bold">제목</label>
                         </div>
                         <div class="w-100 p-1">
-                            <input class="form-control" type="text" name="push-title" id="" placeholder="푸시 알림 받기">
+                            <input class="form-control" type="text" name="pushTitle" id="" placeholder="푸시 알림 받기">
                         </div>
                     </div>
                     <div class="serv-nm border rounded d-flex mt-2 p-0">
                         <div class="p-2 w-25">
-                            <label for="push-content" class="fw-bold">내용</label>
+                            <label for="pushContent" class="fw-bold">내용</label>
                         </div>
                         <div class="w-100 p-1">
-                            <input class="form-control" type="text" name="push-content" id="" placeholder="지금 푸시 알림을 구독하고 중요한 최신 소식들을 가장 먼저 받아보세요!">
+                            <input class="form-control" type="text" name="pushContent" id="" placeholder="지금 푸시 알림을 구독하고 중요한 최신 소식들을 가장 먼저 받아보세요!">
                         </div>
                     </div>
                     <div class="serv-nm border rounded d-flex mt-2 p-0">
@@ -80,7 +81,7 @@
                             <label for="follow-btn-nm" class="fw-bold">구독 버튼명</label>
                         </div>
                         <div class="w-100">
-                            <input class="form-control" type="text" name="follow-btn-nm" id="" placeholder="알림 받기">
+                            <input class="form-control" type="text" name="followBtnNm" id="" placeholder="알림 받기">
                         </div>
                         <div class="input-group d-flex align-items-center m-0" >
                             <label for="color" class="fw-bold" style="margin: 0 10px 0 10px;">버튼 색상</label>
@@ -93,7 +94,7 @@
                             <label for="close-btn" class="fw-bold">닫기 버튼명</label>
                         </div>
                         <div class="w-50 p-1">
-                            <input class="form-control" type="text" name="close-btn" id="" placeholder="다음에">
+                            <input class="form-control" type="text" name="closeBtnNm" id="" placeholder="다음에">
                         </div>
                     </div>
                     <div class="serv-nm border rounded d-flex mt-2 p-0">
@@ -101,7 +102,7 @@
                             <label for="pop-show-time" class="fw-bold">팝업 노출 시간(초)</label>
                         </div>
                         <div class="w-50 p-1">
-                            <input class="form-control" type="text" name="pop-show-time" id="" placeholder="5">
+                            <input class="form-control" type="text" name="popShowTime" id="" placeholder="5">
                         </div>
                     </div>
                     <div class="serv-nm border rounded d-flex mt-2 p-0">
@@ -109,11 +110,11 @@
                             <label for="pop-show-date" class="fw-bold">재노출 간격(일)</label>
                         </div>
                         <div class="w-50 p-1">
-                            <input class="form-control" type="text" name="pop-show-date" id="" placeholder="7">
+                            <input class="form-control" type="text" name="popShowDate" id="" placeholder="7">
                         </div>
                     </div>
                     <div class="mt-3 d-flex justify-content-end">
-                        <button class="btn1 btn-blue px-3 mx-3">저장</button>
+                        <button type="submit" class="btn1 btn-blue px-3 mx-3">저장</button>
                     </div>
                 </form>
             </div>
@@ -123,13 +124,13 @@
                 <span class="step text-nowrap m-2">3</span>구독 완료 메시지 & 휴대폰번호 수집 설정
             </div>
             <div class="card-body">
-                <form action="" class="setting-form col-6 mx-3">
+                <form action="" class="setting-form col-6 mx-3" id="form3">
                     <div class="serv-nm border rounded d-flex mt-2 p-0">
                         <div class="p-2 w-25">
                             <label for="alert-msg" class="fw-bold">내용</label>
                         </div>
                         <div class="w-100 p-1">
-                            <input class="form-control" type="text" name="alert-msg" id="" placeholder="알림 구독 완료! 이제 최신 소식들을 받아볼 수 있습니다.">
+                            <input class="form-control" type="text" name="alertMsg" id="" placeholder="알림 구독 완료! 이제 최신 소식들을 받아볼 수 있습니다.">
                         </div>
                     </div>
                     <div class="serv-nm border rounded d-flex mt-2 p-0">
@@ -138,14 +139,14 @@
                         </div>
                         <div class="w-100 p-1">
                             <div class="form-check form-switch mx-3 mt-2 position-relative">
-                               <input class="form-check-input" type="checkbox" id="flexSwitchCheck" style="width: 40px;">    
+                               <input class="form-check-input" type="checkbox" name="phoneNumAgree" id="flexSwitchCheck" style="width: 40px;">    
                                <span class="position-absolute hidden" id="on">ON</span> 
                             </div>
-                            <input class="form-control" type="number" name="auth-phone" id="" placeholder="휴대폰번호도 등록하면 문자로 더 유익한 혜택을 보내드려요!">
+                            <input class="form-control" type="number" name="authPhoneNum" id="" placeholder="휴대폰번호도 등록하면 문자로 더 유익한 혜택을 보내드려요!">
                         </div>
                     </div>
                     <div class="mt-3 d-flex justify-content-end">
-                        <button class="btn1 btn-blue px-3 mx-3">저장</button>
+                        <button type="submit" class="btn1 btn-blue px-3 mx-3">저장</button>
                     </div>
                 </form>
             </div>
@@ -155,7 +156,7 @@
                 <span class="step text-nowrap m-2">4</span>연동하기
             </div>
             <div class="card-body">
-                <form action="" class="setting-form mx-3 w-100"> 
+                <div class="setting-form mx-3 w-100"> 
                     <h6>귀하의 웹사이트 &lt/body&gt 태그 바로 위에 다음 스크립트를 추가하세요.</h6>
                     <div class="card card-subtitle block-code rounded p-0 w-50 mt-3">
                         <div class="card-header bg-transparent p-0 d-flex flex-row align-items-start">
@@ -175,9 +176,56 @@
                             </p>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>              
     </div>
+    <Script>
+        $(document).ready(function(){
+
+            // params: serviceNm, serviceSite, uploadIcon
+            $('#form1').on('submit', function(e){
+                e.defaultPrevented();
+                const data = $("#form1").serialize();
+                submitFormTo($(this).attr('action'), data);
+            });
+
+            // params: pushTitle, pushContent, followBtnNm, closeBtnNm, popShowTime, popShowDate
+            $('#form2').on('submit', function(e){
+                e.defaultPrevented();
+                const data = $("#form2").serialize();
+                submitFormTo($(this).attr('action'), data);
+            });
+
+            // params: alertMsg, phoneNumAgree, authPhoneNum
+            $('#form3').on('submit', function(e){
+                e.defaultPrevented();
+                const data = $("#form3").serialize();
+                submitFormTo($(this).attr('action'), data);
+            });
+
+            $('#flexSwitchCheck').change(function(){
+                $(this).is(':checked') == true ? $(this).val('Y') : $(this).val('N');
+            });
+        }); 
+
+        const submitFormTo = (url, data) =>{
+            $.ajax({
+                url: url,
+                method: "POST",
+                data: data,
+                dataType: "json",
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function(){
+                    alert('Success');
+                }, 
+                error: function(){
+                   alert('post form error!'); 
+                }
+            });
+        }
+    </Script>
 </body>
 </html>

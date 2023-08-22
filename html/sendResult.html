@@ -21,15 +21,15 @@
                     <div class="col card-size-sm border shadow-sm">
                         <p class="fs-6 fw-bold m-2">메시지 내용</p>
                         <div class="bg-img mx-3">
-                            <img src="" alt="이미지">
+                            <img src="" alt="이미지" id="img" class="w-100">
                         </div>
-                        <p class="fs-12 m-3">2023.04.18 AM 12:59:59</p>
+                        <p class="fs-12 m-3" id="sendTime">2023.04.18 AM 12:59:59</p>
                         <div class="mess-content m-3 text-wrap text-truncate mb-4 pb-2">
-                            <p>메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용</p>
+                            <p id="content">메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용 메시지 내용</p>
                         </div>
                     </div>
                     <div class="col card-size-sm border mx-md-2 shadow-sm h-100">
-                        <p class="fw-bold mb-3 mt-3 text-center">총 <span>1000</span>건 발송</p>
+                        <p class="fw-bold mb-3 mt-3 text-center">총 <span id="totalSend">1000</span>건 발송</p>
                         <div class="mx-5 mx-sm-12">
                             <canvas id="chart-result"></canvas>
                         </div>
@@ -44,30 +44,30 @@
                             <p class="fs-6 fw-bold m-2">발송 대상</p>
                             <div class="ct-flex mt-1">
                                 <p>수신동의 날짜</p>
-                                <span>전체 (999,999,999)</span>
+                                <span id="rad">전체 (999,999,999)</span>
                             </div>
                             <div class="ct-flex">
                                 <p>데스크탑</p>
-                                <span>600건 성공 / 총 950건 발송</span>
+                                <span id="desCnt">600건 성공 / 총 950건 발송</span>
                             </div> 
                             <div class="ct-flex">
                                 <p>모바일</p>
-                                <span>201건 성공 / 총 350건 발송</span>
+                                <span id="mobiCnt">201건 성공 / 총 350건 발송</span>
                             </div>     
                         </div>
                         <div class="react border row mt-2 shadow-sm h-50">
                             <p class="fs-6 fw-bold m-2">반응</p>
                             <div class="ct-flex mt-1">
                                 <p>URL</p>
-                                <span>http://factmessage.com/</span>
+                                <span id="resUrl">http://factmessage.com/</span>
                             </div>
                             <div class="ct-flex">
                                 <p>클릭 수</p>
-                                <span>600건</span>
+                                <span id="clickCnt">600건</span>
                             </div> 
                             <div class="ct-flex">
                                 <p>반응률</p>
-                                <span>99%</span>
+                                <span id="resRate">99%</span>
                             </div>
                         </div>
                     </div>
@@ -118,38 +118,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>데스크탑</td>
-                                    <td>Chrome <span class="text-muted">112.0.5615.86</span></td>
-                                    <td>0000.00.00 AM 00:00:00</td>
-                                    <td colspan="1" class="text-truncate text-short">https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...</td>
-                                    <td class="text-primary">성공</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>모바일</td>
-                                    <td>Chrome <span class="text-muted">112.0.5615.86</span></td>
-                                    <td>0000.00.00 AM 00:00:00</td>
-                                    <td colspan="1" class="text-truncate text-short">https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...</td>
-                                    <td>대기</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>모바일</td>
-                                    <td>Chrome <span class="text-muted">112.0.5615.86</span></td>
-                                    <td>0000.00.00 AM 00:00:00</td>
-                                    <td colspan="1" class="text-truncate text-short">https://fcm.googleapis.com/fcm/send/e27aa5Adqrs:AP...</td>
-                                    <td class="text-danger">실패</td>
-                                    <td></td>
-                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
-                    <div class=" d-flex justify-content-center mt-5">
-                        <nav aria-label="Page navigation">
+                    <div class="d-flex justify-content-center mt-5">
+                        <nav aria-label="Page navigation" class="hidden">
                           <ul class="pagination">
                             <li class="page-item">
                               <a class="page-link" href="#" aria-label="Previous">
@@ -175,6 +149,11 @@
 
         $(document).ready(function(){
 
+            const timeStamp = new Date().toLocaleDateString('en-CA');
+            handleEventFromMessList(2, '/json/dummy.json', timeStamp);
+
+            //수신자별 결과 가져오기
+            getSendResultList('/json/dummy.json');
 
 
         });
@@ -184,59 +163,142 @@
                 url: url,
                 dataType: 'json',
                 success: function (res) {
-                    
-                    $.each(dtList, function(item){
+                    let dtList = res.sendResult;
+                    let html = '';
+                    let totalSend = dtList.length;
+                    let desCnt = 0;
+                    let desSuccessCnt = 0;
+                    let mobiCnt = 0;
+                    let mobiSuccessCnt = 0;
+                    let successCnt = 0;
+                    let failCnt = 0;
+                    let waitingCnt = 0;
+                    let clickCnt = 0;
+                    let resRate = 0;
 
-                    })           
+                    $('#totalSend').text(totalSend);
+                    $('tbody tr').remove();       
+                    $.each(dtList, function(index,item){
+                        html += '<tr>';
+                            html += `<th>${item.no}</th>`;
+                            if(item.platform === 'D'){ 
+                                html += `<td>데스크탑</td>`;
+                                desCnt += 1; 
+                            }else{
+                                html += `<td>모바일</td>`;
+                                mobiCnt += 1; 
+                            };
+                            html += `<td>${item.browser}<span class="text-muted">${item.ip}</span></td>`;
+                            html += `<td>${item.RAD}</td>`;
+                            html += `<td class="text-truncate text-short">${item.userToken}</td>`;
+                            if(item.sendStatus === 'S'){
+                                html += `<td class="text-primary">성공</td>`;
+                                successCnt += 1;
+                            }else if(item.sendStatus === 'F'){
+                                html += `<td class="text-danger">실패</td>`;
+                                failCnt += 1;
+                            }else{
+                                html += `<td>대기</td>`;
+                                waitingCnt += 1;
+                            }
+                            html += `<td>${item.urlClick}</td>`;
+                            item.urlClick === 'Y'? clickCnt += 1: clickCnt;
+                        html += '</tr>';
+
+                        if(item.platform === 'D' && item.sendStatus === 'S'){
+                            desSuccessCnt += 1;
+                        }else if(item.platform === 'M' && item.sendStatus === 'S'){
+                            mobiSuccessCnt += 1;
+                        }
+                    })
+                    $('tbody').append(html);
+
+                    resRate = (clickCnt/successCnt)*100;
+
+                    setChartData(successCnt, failCnt, waitingCnt);
+                    $('#desCnt').text(`${desSuccessCnt}건 성공 / 총 ${desCnt}건 발송`);           
+                    $('#mobiCnt').text(`${mobiSuccessCnt}건 성공 / 총 ${mobiCnt}건 발송`);
+                    $('#clickCnt').text(`${clickCnt}건`);
+                    $('#resRate').text(`${resRate}%`);           
                 },
                 error: function(){
-
+                    alert("fetch data error!");
                 }
             });
-
         }
 
+        const handleEventFromMessList = (messId, url, rad) =>{
+                $.ajax({
+                    url: url,
+                    dataType: 'json',
+                    success: function(res){
+                        let data = res.messageList;
+                        $.each( data, function(idx, item){
+                            if(item.id === messId){
+                                if(item.image === undefined || item.image === ""){
+                                    $('img').parent().remove();
+                                }else{
+                                    $('#img').attr('src', item.image);
+                                };
+                                $('#content').text(item.content);
+                                $('#sendTime').text(item.sendTime);
+                                $('#resUrl').text(item.responseUrl);
+                                $('#rad').text(`${rad} ~ ${rad}`);
+                                $('input[type="date"]').val(rad);
+                            }
+                        });
+                    },
+                    error: function(){
+                        alert('fetch data error!');
+                    }
+                });
+            }
+
         // chart handling
-        const chartData = (dataArr) =>{
-            let arr = [];
-            
-        };
-        const data = [{
-            data: [740, 210, 50],
-            backgroundColor: [
-                "#bb86fc",
-                "#00c4b4",
-                "#7f39fb"
-            ],
-            borderColor: "transparent"
-        }];
+        
+        const setChartData = (successCnt, failCnt, waitingCnt) =>{
+            const chartArrData = [];
+            chartArrData.push(successCnt);
+            chartArrData.push(failCnt);
+            chartArrData.push(waitingCnt);
+
+            const data = [{
+                data: chartArrData,
+                backgroundColor: [
+                    "#bb86fc",
+                    "#00c4b4",
+                    "#7f39fb"
+                ],
+                borderColor: "transparent"
+            }];
         
 
 
-        const ctx = document.getElementById('chart-result').getContext('2d');
-        const myChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                datasets: data
-            },
-            options: {
-                tooltips: {
-                    enabled: false
+            const ctx = document.getElementById('chart-result').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    datasets: data
                 },
-                plugins: {
-                    datalabels: {
-                    formatter: (value, ctx) => {
-                        const datapoints = ctx.chart.data.datasets[0].data
-                        const total = datapoints.reduce((total, datapoint) => total + datapoint, 0)
-                        const percentage = value / total * 100
-                        return percentage.toFixed(2) + "%";
+                options: {
+                    tooltips: {
+                        enabled: false
                     },
-                    color: '#fff',
+                    plugins: {
+                        datalabels: {
+                        formatter: (value, ctx) => {
+                            const datapoints = ctx.chart.data.datasets[0].data
+                            const total = datapoints.reduce((total, datapoint) => total + datapoint, 0)
+                            const percentage = value / total * 100
+                            return percentage.toFixed(2) + "%";
+                        },
+                        color: '#fff',
+                        }
                     }
-                }
-            },
-            plugins: [ChartDataLabels],
-        });
+                },
+                plugins: [ChartDataLabels],
+            });
+        };
     </script>
 </body>
 </html>

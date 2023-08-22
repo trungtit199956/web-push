@@ -6,6 +6,7 @@
     <title>내 메시지</title>
     <link rel="stylesheet" href="/styles.css">
     <script type="module" src="/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -15,7 +16,7 @@
         <div class="card card-subtitle card-size mt-5 mx-2" style="border-radius: 24px;">
             <div class="card-header bg-transparent m-3 pb-3">
                 <form action="" class="d-flex align-items-center justify-content-end">
-                    <div class="btn-blue rounded" style="width: fit-content;">
+                    <div class="btn-blue rounded" id="btn" style="width: fit-content;">
                         <span><i class="bi bi-file-bar-graph-fill"></i></span>기간별 통계
                     </div>
                     <div class="mx-2">
@@ -33,42 +34,42 @@
                 </form>
             </div>
             <div class="card-body">
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                         <tr class="text-muted">
                             <th>메시지</th>
                             <th>상태</th>
                             <th>발송일</th>
-                            <th>성공율</th>
-                            <th>결과분석</th>
+                            <th class="hidden">성공율</th>
+                            <th class="hidden">결과분석</th>
                         </tr>
                     </thead>
-                    <tbody class="text-align-center">
+                    <tbody >
                         <tr>
                             <td class="text-truncate text-short">(광고) 이니그마 알아서 절약하는 똑똑한 메시지 발송, 지능형 메시징 시스템입니다. 한번의 원클릭으로 다양한 채...</td>
                             <td><span class="bg-gray">발송중</span></td>
                             <td class="fs-12">2022.12.31</td>
-                            <td><span class="bg-gray">100%</span></td>
-                            <td><i class="bi bi-file-bar-graph-fill"></i></td>
+                            <td class="hidden"><span class="bg-gray">100%</span></td>
+                            <td class="hidden"><i class="bi bi-file-bar-graph-fill fs-3"></i></td>
                         </tr>
                         <tr>
                             <td class="text-truncate text-short">(광고) 이니그마 알아서 절약하는 똑똑한 메시지 발송, 지능형 메시징 시스템입니다. 한번의 원클릭으로 다양한 채...</td>
                             <td><span class="bg-gray">완료</span></td>
                             <td class="fs-12">2022.12.31</td>
-                            <td><span class="bg-gray">100%</span></td>
-                            <td><i class="bi bi-file-bar-graph-fill"></i></td>
+                            <td class="hidden"><span class="bg-gray">100%</span></td>
+                            <td class="hidden"><i class="bi bi-file-bar-graph-fill fs-3"></i></td>
                         </tr>
                         <tr>
                             <td class="text-truncate text-short">(광고) 이니그마 알아서 절약하는 똑똑한 메시지 발송, 지능형 메시징 시스템입니다. 한번의 원클릭으로 다양한 채...</td>
                             <td><span class="bg-gray">예약대기</span></td>
                             <td class="fs-12">2022.12.31</td>
-                            <td><span class="bg-gray">100%</span></td>
-                            <td><i class="bi bi-file-bar-graph-fill"></i></td>
+                            <td class="hidden"><span class="bg-gray hidden">100%</span></td>
+                            <td class="hidden"><i class="bi bi-file-bar-graph-fill fs-3"></i></td>
                         </tr>
                     </tbody>
                 </table>
-                <div class=" d-flex justify-content-center mt-5">
-                    <nav aria-label="Page navigation">
+                <div class="d-flex justify-content-center mt-5">
+                    <nav aria-label="Page navigation" class="hidden">
                       <ul class="pagination">
                         <li class="page-item">
                           <a class="page-link" href="#" aria-label="Previous">
@@ -88,6 +89,51 @@
                   </div>
             </div>
         </div>
-    </div>        
+    </div>
+    <script>
+        $(document).ready(function(){
+
+            $('#btn').click(function(){
+                location.href = "/html/statistic.html";
+            });
+
+            $('table').on('click','tr',function(){
+                location.href= "/html/sendResult.html";
+            });
+
+
+            $.ajax({
+                url: '/json/dummy.json',
+                dataType: 'json',
+                success: function(res){
+                    let data = res.messageList;
+                    let html = '';
+
+                    $('tbody tr').remove();
+                    $.each(data ,function(idx, item){
+                        html += '<tr>';
+                           if(item.isAdvertising === 'Y'){
+                            html += `<td class="text-truncate text-short">(광고)${item.content}</td>`;
+                           }else{
+                            html += `<td class="text-truncate text-short">${item.content}</td>`;
+                           }
+                           if(item.sendStatus === "SD"){
+                            html += `<td><span class="bg-gray">발송중</span></td>`; 
+                           }else if(item.sendStatus === "FN"){
+                            html += `<td><span class="bg-gray">완료</span></td>`; 
+                           }else{
+                            html += `<td><span class="bg-gray">예약대기</span></td>`; 
+                           }
+                           html += `<td>${item.sendTime}</td>`;
+                        html += '</tr>';
+                    });
+                    $('tbody').append(html);
+                },
+                error: function(){
+                    alert("fetch data error!");
+                }
+            });
+        });
+    </script>        
 </body>
 </html>
