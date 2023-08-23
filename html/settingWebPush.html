@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Push 설정</title>
     <link rel="stylesheet" href="/styles.css">
-    <script type="module" src="/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
 <body>
@@ -208,6 +207,43 @@
             $('#flexSwitchCheck').hover(function(){
                 $(this).css("cursor", "pointer");
             });
+
+
+
+            $('#iconDel').click(function(){
+        $('#thumbImg').attr('src', '');
+    });
+
+
+    $('input[name="colorPk"]').change(function(){
+        $(this).next().html($(this).val());
+    });
+
+    let cnt = 0;
+    $('#flexSwitchCheck').click(function(){
+        cnt +=1;
+        if(cnt%2 == 0){
+            $(this).css('background-color', 'gray');  
+            $(this).next().addClass('hidden');  
+        }else{
+            $(this).css('background-color', 'green');
+            $(this).next().removeClass('hidden');  
+        }
+    });
+
+    $('.bi-clipboard').click(function(){
+        copyToClipboard('#jsCodeTxt');
+        $(this).removeClass('bi-clipboard');
+        $(this).addClass('bi-clipboard-check');
+    });
+
+    const copyToClipboard= (el) =>{
+        let $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(el).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
 
 
         }); 

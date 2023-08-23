@@ -131,45 +131,6 @@ function handler(){
         el[0].selectionStart = el[0].selectionEnd = start + newText.length;
         el.focus();
     }
-
-
-    /// setting web push
-
-    $('#iconDel').click(function(){
-        $('#thumbImg').attr('src', '');
-    });
-
-
-    $('input[name="colorPk"]').change(function(){
-        $(this).next().html($(this).val());
-    });
-
-    let cnt = 0;
-    $('#flexSwitchCheck').click(function(){
-        cnt +=1;
-        if(cnt%2 == 0){
-            $(this).css('background-color', 'gray');  
-            $(this).next().addClass('hidden');  
-        }else{
-            $(this).css('background-color', 'green');
-            $(this).next().removeClass('hidden');  
-        }
-    });
-
-    $('.bi-clipboard').click(function(){
-        copyToClipboard('#jsCodeTxt');
-        $(this).removeClass('bi-clipboard');
-        $(this).addClass('bi-clipboard-check');
-    });
-
-    const copyToClipboard= (el) =>{
-        let $temp = $("<input>");
-        $("body").append($temp);
-        $temp.val($(el).text()).select();
-        document.execCommand("copy");
-        $temp.remove();
-    }
-
     
     window.onpopstate = function(event) {
         if (event.state && event.state.redirect) {
