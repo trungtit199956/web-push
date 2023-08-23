@@ -35,22 +35,21 @@
                             <input class="form-control" type="text" value="" name="serviceSite" id="" placeholder="기업 혹은 서비스의 사이트 URL 입력해주세요.">
                         </div>
                     </div>
-                    <div class="serv-nm border rounded d-flex p-0 mt-2">
+                    <div class="serv-nm border rounded h-25 d-flex p-0 mt-2 align-items-center">
                         <div class="p-2" style="width: 135px;">
                             <label for="uploadIcon" class="fw-bold">아이콘</label>
                         </div>
-                        <div class="w-100 p-1 d-flex flex-row-reverse">
-                            <button class="btn1 btn-blue px-3" type="button" id="uploadBtn">업로드</button>
-                            <input type="text" class="hidden" value="" name="uploadIcon" accept="image/png, image/jpeg" value="" id="iconUpload">
+                        <div class="w-100 d-flex flex-row-reverse align-items-center">
+                            <button class="btn1 btn-blue px-3 mx-1" type="button" id="uploadBtn">업로드</button>
+                            <p id="imgLink" class="mt-3 w-50"></p>
+                            <!-- <input type="text" class="hidden" value="" name="uploadIcon" value="" id="iconUpload"> -->
                         </div>
                     </div>
                     <div class="mt-3 d-flex flex-row-reverse">
-                        <button type="submit" class="btn1 btn-blue px-3 mx-3">저장</button>
+                        <button type="submit" class="btn1 btn-blue px-3 ">저장</button>
                     </div>
                 </form>
-                <div class="col-6 col-sm-8 mt-sm-4 d-flex justify-content-center">
-                        <!-- <button class="btn-close hidden" id="iconDel"></button>
-                        <img src="" alt="upload image" id="thumbImg"> -->
+                <div class="col col-xs-8 mt-sm-4 mt-lg-0 mx-sm-3 d-flex justify-content-lg-center justify-content-sm-start">
                         <div class="preview-bg">
                             <div class="preview-title d-flex justify-content-between pt-2 px-3">
                                 <p class="text-muted" id="browserNm"><span><i class="bi bi-browser-chrome mx-1"></i></span>브라우저명</p>
@@ -73,71 +72,6 @@
                 </div>
             </div>
         </div>
-        <div class="card card-subtitle card-size mt-5 mx-2 hidden" style="border-radius: 24px;">
-            <div class="card-header bg-transparent card-title m-2">
-                <span class="step text-nowrap m-2">2</span>웹푸시 수신 동의 팝업 설정
-            </div>
-            <div class="card-body">
-                <form action="" class="setting-form col-6 mx-3" id="form2">
-                    <div class="serv-nm border rounded d-flex p-0">
-                        <div class="p-2 w-25">
-                            <label for="pushTitle" class="fw-bold">제목</label>
-                        </div>
-                        <div class="w-100 p-1">
-                            <input class="form-control" type="text" name="pushTitle" id="" placeholder="푸시 알림 받기">
-                        </div>
-                    </div>
-                    <div class="serv-nm border rounded d-flex mt-2 p-0">
-                        <div class="p-2 w-25">
-                            <label for="pushContent" class="fw-bold">내용</label>
-                        </div>
-                        <div class="w-100 p-1">
-                            <input class="form-control" type="text" name="pushContent" id="" placeholder="지금 푸시 알림을 구독하고 중요한 최신 소식들을 가장 먼저 받아보세요!">
-                        </div>
-                    </div>
-                    <div class="serv-nm border rounded d-flex mt-2 p-0">
-                        <div class="p-2 w-50">
-                            <label for="follow-btn-nm" class="fw-bold">구독 버튼명</label>
-                        </div>
-                        <div class="w-100">
-                            <input class="form-control" type="text" name="followBtnNm" id="" placeholder="알림 받기">
-                        </div>
-                        <div class="input-group d-flex align-items-center m-0" >
-                            <label for="color" class="fw-bold" style="margin: 0 10px 0 10px;">버튼 색상</label>
-                            <input type="color" name="colorPk" class="form-control" id="colorPk" value="#6200EE"/>
-                            <span style="margin-right: 10px;" >#6200EE</span>
-                        </div>
-                    </div>
-                    <div class="serv-nm border rounded d-flex mt-2 p-0">
-                        <div class="p-2 w-50">
-                            <label for="close-btn" class="fw-bold">닫기 버튼명</label>
-                        </div>
-                        <div class="w-50 p-1">
-                            <input class="form-control" type="text" name="closeBtnNm" id="" placeholder="다음에">
-                        </div>
-                    </div>
-                    <div class="serv-nm border rounded d-flex mt-2 p-0">
-                        <div class="p-2 w-50">
-                            <label for="pop-show-time" class="fw-bold">팝업 노출 시간(초)</label>
-                        </div>
-                        <div class="w-50 p-1">
-                            <input class="form-control" type="text" name="popShowTime" id="" placeholder="5">
-                        </div>
-                    </div>
-                    <div class="serv-nm border rounded d-flex mt-2 p-0">
-                        <div class="p-2 w-50">
-                            <label for="pop-show-date" class="fw-bold">재노출 간격(일)</label>
-                        </div>
-                        <div class="w-50 p-1">
-                            <input class="form-control" type="text" name="popShowDate" id="" placeholder="7">
-                        </div>
-                    </div>
-                    <div class="mt-3 d-flex justify-content-end">
-                        <button type="submit" class="btn1 btn-blue px-3 mx-3">저장</button>
-                    </div>
-                </form>
-            </div>
-        </div>
         <div class="card card-subtitle card-size mt-5 mx-2" style="border-radius: 24px;">
             <div class="card-header bg-transparent card-title m-2">
                 <span class="step text-nowrap m-2">2</span>구독 완료 메시지 & 휴대폰번호 수집 설정
@@ -149,7 +83,7 @@
                             <label for="alert-msg" class="fw-bold">내용</label>
                         </div>
                         <div class="w-100 p-1">
-                            <input class="form-control" type="text" name="alertMsg" id="" placeholder="알림 구독 완료! 이제 최신 소식들을 받아볼 수 있습니다.">
+                            <input class="form-control" type="text" name="alertMsg1" id="" placeholder="알림 구독 완료! 이제 최신 소식들을 받아볼 수 있습니다.">
                         </div>
                     </div>
                     <div class="serv-nm border rounded d-flex mt-2 p-0">
@@ -161,27 +95,23 @@
                                <input class="form-check-input" type="checkbox" name="phoneNumAgree" id="flexSwitchCheck" style="width: 40px;">    
                                <span class="position-absolute hidden" id="on">ON</span> 
                             </div>
-                            <input class="form-control" type="number" name="authPhoneNum" id="" placeholder="휴대폰번호도 등록하면 문자로 더 유익한 혜택을 보내드려요!">
+                            <input class="form-control" type="text" name="alertMsg2" id="" placeholder="휴대폰번호도 등록하면 문자로 더 유익한 혜택을 보내드려요!">
                         </div>
                     </div>
                     <div class="mt-3 d-flex justify-content-end">
                         <button type="submit" class="btn1 btn-blue px-3">저장</button>
                     </div>
                 </form>
-                <div class="col d-flex justify-content-center justify-content-sm-start m-sm-3">
-                    <div class="preview-bg-1 mt-2 p-4">
+                <div class="col d-flex justify-content-lg-center justify-content-sm-start m-sm-3 m-lg-2">
+                    <div class="preview-bg-1 mt-sm-2 mt-lg-0 p-4">
                         <div class="preview-title">
-                            <p class="fw-bold">알림 구독 완료! 이제 최신 소식들을 받아볼 수 있습니다.</p>
-                            <p class="text-muted">휴대폰번호도 등록하면 문자로 더 유익한 혜택을 보내드려요!</p>
+                            <p class="fw-bold" id="alertMsg1">알림 구독 완료! 이제 최신 소식들을 받아볼 수 있습니다.</p>
+                            <p class="text-muted" id="alertMsg2">휴대폰번호도 등록하면 문자로 더 유익한 혜택을 보내드려요!</p>
                         </div>
                         <div class="preview-body">
                             <div class="d-flex">
                                 <input type="number" name="authPhone" class="form-control" placeholder="휴대폰번호(선택 입력)">
                                 <button class="btn1 btn-blue w-50">인증번호 발송</button>
-                            </div>
-                            <div class="d-flex mt-3">
-                                <input type="number" name="authToken" class="form-control" placeholder="인증번호 입력">
-                                <button class="btn1 btn-blue w-50">등록 완료</button>
                             </div>
                         </div>
                         <div class="preview-footer mt-4 d-flex justify-content-between align-items-center">
@@ -205,9 +135,9 @@
                                 <svg style="max-width: 15px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="javascript"><path fill="#F0D91F" d="M0 0h24v24H0z"></path><path d="M19.784 18.629c-.255-.961-2.251-1.185-3.616-2.205-1.38-.93-1.709-3.18-.569-4.471.39-.48 1.034-.84 1.71-1.005l.705-.089c1.365-.031 2.204.329 2.834 1.034.182.179.316.36.586.78-.721.449-.721.449-1.755 1.125-.226-.48-.586-.78-.976-.9-.6-.18-1.365.014-1.515.66-.059.195-.045.375.046.705.243.555 1.061.795 1.797 1.14 2.115.858 2.828 1.778 3.003 2.873l-.046-.067c.166.945-.045 1.56-.074 1.65-.781 2.67-5.131 2.76-6.871 1.004-.36-.42-.6-.629-.81-1.109l1.83-1.051c.495.75.944 1.156 1.755 1.336 1.096.135 2.206-.24 1.966-1.41zm-11.651.347c.017 0 .064.091.127.196.233.389.434.659.83.855.386.121 1.236.209 1.566-.48.201-.348.138-1.479.138-2.711 0-1.941.009-3.867.009-5.805h2.248l-.004.056c0 2.07.012 4.125 0 6.179.005 1.276.113 2.416-.397 3.346-.353.72-1.028 1.185-1.811 1.411-1.203.27-2.352.105-3.207-.405-.574-.345-1.019-.887-1.324-1.517l1.825-1.125z"></path></svg>
                                 <p class="fw-bold position-absolute" style="margin:-22px 20px;color: #ffff;">JS</p>
                             </div>
-                            <div class="btn p-0 copy-btn w-100 d-flex justify-content-end align-items-center">
+                            <button class="btn p-0 copy-btn w-100 d-flex justify-content-end align-items-center" disabled>
                                 <span class="text-muted">|</span><i class="bi bi-clipboard mx-1"></i>
-                            </div>
+                            </button>
                         </div>
                         <div class="card-body">
                             <p class="hidden" id="jsCodeTxt">&ltscript src="https://cdn.gimesee.com/WebSDK.js" charset="UTF-8"&gt&lt/script&gt<br>
@@ -249,14 +179,8 @@
             if(localStorage.getItem("chk") == 2){
                 localStorage.removeItem("chk");
                 $('#jsCodeTxt').removeClass("hidden");
+                $('.copy-btn').prop('disabled', false);
             }
-
-            // params: alertMsg, phoneNumAgree, authPhoneNum
-            // $('#form3').on('submit', function(e){
-            //     e.defaultPrevented();
-            //     const data = $("#form3").serialize();
-            //     submitFormTo($(this).attr('action'), data);
-            // });
 
             $('#flexSwitchCheck').change(function(){
                 $(this).is(':checked') == true ? $(this).val('Y') : $(this).val('N');
@@ -271,8 +195,19 @@
             $('#uploadBtn').click(function(){
                 $('.preview-body .icon').children().remove();
                 $('.preview-body .icon').css("background-image","url('https://picsum.photos/75/75')");
+                $('#imgLink').text("https://picsum.photos/75/75");
             });
 
+            $('input[name="alertMsg1"]').change(function(){
+                $('#alertMsg1').text($(this).val());
+            });
+
+            $('input[name="alertMsg2"]').change(function(){
+                $('#alertMsg2').text($(this).val());
+            });
+            $('#flexSwitchCheck').hover(function(){
+                $(this).css("cursor", "pointer");
+            });
 
 
         }); 

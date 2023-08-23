@@ -44,22 +44,54 @@ function handler(){
         $('.setSendTime').removeClass('d-inline');
     });
 
-    let arrChk = "allChk";
-    $('#sendChannelForm input[type="radio"]').click(function(){
-        if(arrChk !== ''){
-            $('input[name="'+ arrChk +'"]').prop('checked', false);
+    let arrChk1 = "allChk1";
+    $('#sendChannelForm1 input[type="radio"]').click(function(){
+        if(arrChk1 !== ''){
+            $('input[name="'+ arrChk1 +'"]').prop('checked', false);
         };
-        arrChk = $(this).attr('name');
+        arrChk1 = $(this).attr('name');
         if($('input[name="timeChk"]').is(':checked')){
-            $('#sendChannelForm input[type="date"]').prop('disabled', false);
-            $('#sendChannelForm button').prop('disabled', false);
-            $('#sendChannelForm button').addClass("btn-blue");
-            $('#sendChannelForm button').removeClass("text-muted");
+            $('#sendChannelForm1 input[type="date"]').prop('disabled', false);
+            $('#sendChannelForm1 button').prop('disabled', false);
+            $('#sendChannelForm1 button').addClass("btn-blue");
+            $('#sendChannelForm1 button').removeClass("text-muted");
         }else{
-            $('#sendChannelForm input[type="date"]').attr('disabled', true);
-            $('#sendChannelForm button').attr('disabled', true);
-            $('#sendChannelForm button').removeClass("btn-blue");
-            $('#sendChannelForm button').addClass("text-muted");
+            $('#sendChannelForm1 input[type="date"]').attr('disabled', true);
+            $('#sendChannelForm1 button').attr('disabled', true);
+            $('#sendChannelForm1 button').removeClass("btn-blue");
+            $('#sendChannelForm1 button').addClass("text-muted");
+        }
+    });
+
+    let arrChk2 = "allChk2";
+    $('#sendChannelForm2 input[type="radio"]').click(function(){
+        if(arrChk2 !== ''){
+            $('input[name="'+ arrChk2 +'"]').prop('checked', false);
+        };
+        arrChk2 = $(this).attr('name');
+    });
+    
+    // 수신 동의 자수 불러오기
+    $.ajax({
+        url: "/json/dummy.json",
+        dataType: "json",
+        success: function(res){
+            let resData = res.address;
+            let desCnt = 0;
+            let mobiCnt = 0;
+            $.each(resData,function(idx, item){
+                if(item.platform === 'D' && item.isRegistrant === 'Y'){
+                    desCnt +=1;
+                }else if(item.platform === 'M' && item.isRegistrant === 'Y'){
+                    mobiCnt +=1;
+                }
+            });
+            $('#allCnt').text(desCnt + mobiCnt);
+            $('#desCnt').text(desCnt);
+            $('#mobiCnt').text(mobiCnt);
+        },
+        error: function(){
+            alert('fetch data error!');
         }
     });
 
@@ -84,7 +116,6 @@ function handler(){
         const rootElement = document.querySelector('#emoj-area');
         const picker = createPicker({rootElement,});
         picker.addEventListener('emoji:select', event => {
-            // $('#msg-area').text(event.emoji);
             typeInTextarea($('#msg-area'), event.emoji);
                 return false;
             });
@@ -108,32 +139,6 @@ function handler(){
         $('#thumbImg').attr('src', '');
     });
 
-
-    $('#uploadBtn').click(function(){
-        $('#iconUpload').click();
-        $('#iconUpload').on('change', async function(e){
-            const imgUrl = e.target.files[0];
-            const base64 = await convertBase64(imgUrl);
-            // console.log(base64);
-            $('#iconDel').removeClass('hidden');
-            $('#thumbImg').attr('src', base64);
-        }); 
-    });
-
-    const convertBase64 = (file) => {
-        return new Promise((resolve, reject) => {
-            const fileReader = new FileReader();
-            fileReader.readAsDataURL(file);
-    
-            fileReader.onload = () => {
-                resolve(fileReader.result);
-            };
-    
-            fileReader.onerror = (error) => {
-                reject(error);
-            };
-        });
-    };
 
     $('input[name="colorPk"]').change(function(){
         $(this).next().html($(this).val());

@@ -28,11 +28,11 @@
         <div class="card mb-3 card-subtitle card-size" style="border-radius: 24px;">
           <div class="card-header bg-transparent card-title m-2"><span class="step text-nowrap m-2">1</span>발송 채널</div>
           <div class="card-body d-inline-flex m-3 justify-content-evenly">
-            <form action="" class="input-group" id="sendChannelForm">
-              <div class="mx-5">
-                <p for="" class="fw-bold">Web Push 수신 동의 날짜</p>
+            <form action="" class="input-group row" id="sendChannelForm">
+              <div class="mx-5" id="sendChannelForm1">
+                <p class="fw-bold">Web Push 수신 동의 날짜</p>
                 <div class="form-check-inline">
-                  <input type="radio" name="allChk" checked>
+                  <input type="radio" name="allChk1" checked>
                   <label for="" class="fw-bold">전체</label>
                 </div>
                 <div class="form-check-inline">  
@@ -44,6 +44,26 @@
                   <input class="form-control" type="date" name="endDt" disabled>
                 </div>
                 <button id="settingBtn" class="btn1 px-3 text-muted" disabled>설정</button>
+              </div>
+              <div class="mx-5 mt-4" id="sendChannelForm2">
+                <p class="fw-bold">Web Push 수신 동의자</p>
+                <div class="form-check-inline fw-bold d-flex">
+                  <div>
+                    <input type="radio" name="allChk2" checked>
+                    <span>전체</span>
+                    <span id="allCnt" class="text-purple">99,999,999</span>
+                  </div>
+                  <div class="mx-4">
+                    <input type="radio" name="desChk">
+                    <span>데스크탑</span>
+                    <span id="desCnt" class="text-purple">99,999,999</span>
+                  </div>
+                  <div>
+                    <input type="radio" name="mobiChk">
+                    <span>모바일</span>
+                    <span id="mobiCnt" class="text-purple">99,999,999</span>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
