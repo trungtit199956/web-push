@@ -14,11 +14,13 @@ function handler(){
     $('.att-img').click(function(){
         $('.img-del').removeClass("disabled");
         $('.img-preview').attr("src","https://random.imagecdn.app/501/155");
+        $('#imgLink').text("https://random.imagecdn.app/501/155");
     });
 
     $('.img-del').click(function(){
         $('.img-del').addClass("disabled",true);
         $('.img-preview').attr("src","");
+        $('#imgLink').text('');
     });
 
     $('input[name="reservSend"]').click( function(){
@@ -41,6 +43,26 @@ function handler(){
         $('.setSendTime').addClass('hidden');
         $('.setSendTime').removeClass('d-inline');
     });
+
+    let arrChk = "allChk";
+    $('#sendChannelForm input[type="radio"]').click(function(){
+        if(arrChk !== ''){
+            $('input[name="'+ arrChk +'"]').prop('checked', false);
+        };
+        arrChk = $(this).attr('name');
+        if($('input[name="timeChk"]').is(':checked')){
+            $('#sendChannelForm input[type="date"]').prop('disabled', false);
+            $('#sendChannelForm button').prop('disabled', false);
+            $('#sendChannelForm button').addClass("btn-blue");
+            $('#sendChannelForm button').removeClass("text-muted");
+        }else{
+            $('#sendChannelForm input[type="date"]').attr('disabled', true);
+            $('#sendChannelForm button').attr('disabled', true);
+            $('#sendChannelForm button').removeClass("btn-blue");
+            $('#sendChannelForm button').addClass("text-muted");
+        }
+    });
+
 
     let chkCnt = 0;
     $('.att-emoj').click(function(){

@@ -41,20 +41,39 @@
                         </div>
                         <div class="w-100 p-1 d-flex flex-row-reverse">
                             <button class="btn1 btn-blue px-3" type="button" id="uploadBtn">업로드</button>
-                            <input type="file" class="hidden" value="" name="uploadIcon" accept="image/png, image/jpeg" value="" id="iconUpload">
+                            <input type="text" class="hidden" value="" name="uploadIcon" accept="image/png, image/jpeg" value="" id="iconUpload">
                         </div>
                     </div>
                     <div class="mt-3 d-flex flex-row-reverse">
                         <button type="submit" class="btn1 btn-blue px-3 mx-3">저장</button>
                     </div>
                 </form>
-                <div class="mx-5 col-6 d-flex justify-content-center">
-                        <button class="btn-close hidden" id="iconDel"></button>
-                        <img src="" alt="upload image" id="thumbImg">
+                <div class="col-6 d-flex justify-content-center">
+                        <!-- <button class="btn-close hidden" id="iconDel"></button>
+                        <img src="" alt="upload image" id="thumbImg"> -->
+                        <div class="preview-bg ">
+                            <div class="preview-title d-flex justify-content-between pt-2 px-3">
+                                <p class="text-muted" id="browserNm"><span><i class="bi bi-browser-chrome mx-1"></i></span>브라우저명</p>
+                                <div>
+                                    <i class="bi bi-gear-fill text-muted"></i>
+                                    <i class="bi bi-x-lg text-muted"></i>
+                                </div>
+                            </div>
+                            <div class="preview-body row">
+                                <div class="col mx-4 icon mt-3 pt-4">
+                                    <div class="fs-12 text-center">아이콘</div>
+                                </div>
+                                <div class="col">
+                                    <p class="text-muted pb-0" id="serviceNm">서비스명</p>
+                                    <p id="msg-content" class="text-truncate" style="max-width: 250px;">메시지내용메시지내용메시지내용메시지내용메시지내용메시지내용메시지내용메시지내용메시지내용메시지내용메시지내용메시지내용메시지내용</p><span class="text-muted">더보기</span>
+                                    <p id="siteUrl" class="text-muted">사이트 URL</p>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
-        <div class="card card-subtitle card-size mt-5 mx-2" style="border-radius: 24px;">
+        <div class="card card-subtitle card-size mt-5 mx-2 hidden" style="border-radius: 24px;">
             <div class="card-header bg-transparent card-title m-2">
                 <span class="step text-nowrap m-2">2</span>웹푸시 수신 동의 팝업 설정
             </div>
@@ -121,10 +140,10 @@
         </div>
         <div class="card card-subtitle card-size mt-5 mx-2" style="border-radius: 24px;">
             <div class="card-header bg-transparent card-title m-2">
-                <span class="step text-nowrap m-2">3</span>구독 완료 메시지 & 휴대폰번호 수집 설정
+                <span class="step text-nowrap m-2">2</span>구독 완료 메시지 & 휴대폰번호 수집 설정
             </div>
-            <div class="card-body">
-                <form action="" class="setting-form col-6 mx-3" id="form3">
+            <div class="card-body row">
+                <form action="" class="setting-form col-6 mx-3" id="form2">
                     <div class="serv-nm border rounded d-flex mt-2 p-0">
                         <div class="p-2 w-25">
                             <label for="alert-msg" class="fw-bold">내용</label>
@@ -146,14 +165,36 @@
                         </div>
                     </div>
                     <div class="mt-3 d-flex justify-content-end">
-                        <button type="submit" class="btn1 btn-blue px-3 mx-3">저장</button>
+                        <button type="submit" class="btn1 btn-blue px-3">저장</button>
                     </div>
                 </form>
+                <div class="col d-flex justify-content-center">
+                    <div class="preview-bg-1 mt-2 p-4">
+                        <div class="preview-title">
+                            <p class="fw-bold">알림 구독 완료! 이제 최신 소식들을 받아볼 수 있습니다.</p>
+                            <p class="text-muted">휴대폰번호도 등록하면 문자로 더 유익한 혜택을 보내드려요!</p>
+                        </div>
+                        <div class="preview-body">
+                            <div class="d-flex">
+                                <input type="number" name="authPhone" class="form-control" placeholder="휴대폰번호(선택 입력)">
+                                <button class="btn1 btn-blue w-50">인증번호 발송</button>
+                            </div>
+                            <div class="d-flex mt-3">
+                                <input type="number" name="authToken" class="form-control" placeholder="인증번호 입력">
+                                <button class="btn1 btn-blue w-50">등록 완료</button>
+                            </div>
+                        </div>
+                        <div class="preview-footer mt-4 d-flex justify-content-between align-items-center">
+                            <p class="fs-12 text-muted">지메시 이용중</p>
+                            <button class="btn border text-purple fw-bold">취소</button>
+                        </div>
+                    </div>
+                </div>        
             </div>
         </div>
         <div class="card card-subtitle card-size mt-5 mx-2" style="border-radius: 24px;">
             <div class="card-header bg-transparent card-title m-2">
-                <span class="step text-nowrap m-2">4</span>연동하기
+                <span class="step text-nowrap m-2">3</span>연동하기
             </div>
             <div class="card-body">
                 <div class="setting-form mx-3 w-100"> 
@@ -169,7 +210,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <p id="jsCodeTxt">&ltscript src="https://cdn.gimesee.com/WebSDK.js" charset="UTF-8"&gt&lt/script&gt<br>
+                            <p class="hidden" id="jsCodeTxt">&ltscript src="https://cdn.gimesee.com/WebSDK.js" charset="UTF-8"&gt&lt/script&gt<br>
                                &ltscript&gt<br>
                                Gimesee.initialize({ projectId: "990by8d93-2f7f-43an-bd78-c0323b194eb1" });
                                &lt/script&gt
@@ -182,7 +223,6 @@
     </div>
     <Script>
         $(document).ready(function(){
-
             // params: serviceNm, serviceSite, uploadIcon
             $('#form1').on('submit', function(e){
                 e.defaultPrevented();
@@ -197,16 +237,44 @@
                 submitFormTo($(this).attr('action'), data);
             });
 
-            // params: alertMsg, phoneNumAgree, authPhoneNum
-            $('#form3').on('submit', function(e){
-                e.defaultPrevented();
-                const data = $("#form3").serialize();
-                submitFormTo($(this).attr('action'), data);
+            
+            
+            $('#form1 button').click(function(){
+                localStorage.setItem("chk", 1);
             });
+            $('#form2 button').click(function(){
+                localStorage.setItem("chk", 2);
+            });
+            
+            if(localStorage.getItem("chk") == 2){
+                localStorage.removeItem("chk");
+                $('#jsCodeTxt').removeClass("hidden");
+            }
+
+            // params: alertMsg, phoneNumAgree, authPhoneNum
+            // $('#form3').on('submit', function(e){
+            //     e.defaultPrevented();
+            //     const data = $("#form3").serialize();
+            //     submitFormTo($(this).attr('action'), data);
+            // });
 
             $('#flexSwitchCheck').change(function(){
                 $(this).is(':checked') == true ? $(this).val('Y') : $(this).val('N');
             });
+
+            $('input[name="serviceNm"]').change(function(){
+                $('#serviceNm').text($(this).val());
+            });
+            $('input[name="serviceSite"]').change(function(){
+                $('#siteUrl').text($(this).val());
+            });
+            $('#uploadBtn').click(function(){
+                $('.preview-body .icon').children().remove();
+                $('.preview-body .icon').css("background-image","url('https://picsum.photos/75/75')");
+            });
+
+
+
         }); 
 
         const submitFormTo = (url, data) =>{
